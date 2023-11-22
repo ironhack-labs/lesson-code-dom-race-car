@@ -29,7 +29,7 @@ class Game {
     // Show the game screen
     this.gameScreen.style.display = "block";
 
-    //
+    // Start the game loop
     this.gameLoop();
   }
 
