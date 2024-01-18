@@ -17,6 +17,8 @@ class Game {
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
+    this.gameIntervalId;
+    this.gameLoopFrequency = Math.round(1000/60); // 60fps
   }
 
   start() {
@@ -29,20 +31,20 @@ class Game {
     // Show the game screen
     this.gameScreen.style.display = "block";
 
-    // Start the game loop
-    this.gameLoop();
+    // Executes the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
+    this.gameIntervalId = setInterval(() => {
+      this.gameLoop()
+    }, this.gameLoopFrequency)
   }
 
   gameLoop() {
     console.log("in the game loop");
 
-    if (this.gameIsOver) {
-      return;
-    }
-
     this.update();
-
-    window.requestAnimationFrame(() => this.gameLoop());
+    
+    if (this.gameIsOver) {
+      clearInterval(this.gameIntervalId)
+    }
   }
 
   update() {
