@@ -18,7 +18,7 @@ class Game {
     this.lives = 3;
     this.gameIsOver = false;
     this.gameIntervalId;
-    this.gameLoopFrequency = 1000/60 // 60fps
+    this.gameLoopFrequency = Math.round(1000/60); // 60fps
   }
 
   start() {
